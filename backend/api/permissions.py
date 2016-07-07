@@ -4,11 +4,11 @@ class isDepartment(permissions.BasePermission):
 
     def has_object_permission(self, request, view, obj):
 
-        # User was created without usertype specification
+        # User is a superuser?
         try:
             usertype = request.user.usertype
         except:
-            return False
+            return True
 
         if usertype.usertype == "manager":
             return obj.department == usertype.department

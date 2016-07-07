@@ -34,8 +34,7 @@ class Document(models.Model):
     status = models.CharField(choices=STATUS_CHOICES, max_length=50)
     department = models.ForeignKey('Department', related_name="document")
 
-    # Needs revision
-    file_link = models.CharField(max_length=200)
+    file_link = models.FileField(upload_to='uploads/%Y/%m/%d')
 
     PI_first_name = models.CharField(max_length=50)
     PI_last_name = models.CharField(max_length=50)
@@ -59,3 +58,7 @@ class Grant(models.Model):
         permissions = (
             ('view_grant', 'View Grant'),
         )
+
+class Doctest(models.Model):
+    file = models.FileField(upload_to='uploads/')
+

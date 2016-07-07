@@ -1,6 +1,7 @@
 from api import views
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
+from api.views import FileUploadView
 
 urlpatterns = format_suffix_patterns([
     url(r'^$', views.api_root),
@@ -29,4 +30,10 @@ urlpatterns = format_suffix_patterns([
     url(r'^grant/(?P<pk>[0-9]+)/$',
         views.GrantDetail.as_view(),
         name='grant-detail'),
+    url(r'doctests/$', views.DoctestList.as_view(),
+        name='doctest-list'),
+    url(r'^doctest/(?P<pk>[0-9]+)/$',
+        views.DoctestDetail.as_view(),
+        name='doctest-detail'),
+    url(r'^doctests/uploads/(?P<filename>[^/]+)$', FileUploadView.as_view())
 ])

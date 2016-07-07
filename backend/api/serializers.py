@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from api.models import Department, Usertype, Document, Grant
+from api.models import Department, Usertype, Document, Grant, Doctest
 from django.contrib.auth.models import User
 
 
@@ -10,6 +10,7 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url', 'date_submitted', 'date_published', 'title', 'publisher', 'institution',
                   'status', 'file_link', 'PI_first_name', 'PI_last_name',
                   'PI_email', 'author_list', 'department')
+        readonly_fields = ('url', 'image')
 
 
 class DepartmentSerializer(serializers.HyperlinkedModelSerializer):
@@ -35,3 +36,8 @@ class GrantSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Grant
         fields = ('url', 'number', 'department', 'document')
+
+class DoctestSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Doctest
+        fields = ('url', 'file')
