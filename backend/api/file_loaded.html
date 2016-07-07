@@ -1,0 +1,11 @@
+{% extends "rest_framework/base.html" %}
+
+<html><body>
+<h1>Documents</h1>
+<ul>
+    {% for file in files %}
+    	{% load static from staticfiles %}
+    	<img src="{% static "uploads/Stewart.jpg" %}" alt="HI" />
+    {% endfor %}
+</ul>
+</body></html>

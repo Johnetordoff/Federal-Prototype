@@ -35,5 +35,5 @@ urlpatterns = format_suffix_patterns([
     url(r'^doctest/(?P<pk>[0-9]+)/$',
         views.DoctestDetail.as_view(),
         name='doctest-detail'),
-    url(r'^doctests/uploads/(?P<filename>[^/]+)$', FileUploadView.as_view())
+    url(r'^doctests/uploads/(?P<file>[^/]+)$', FileUploadView.as_view())
 ])
