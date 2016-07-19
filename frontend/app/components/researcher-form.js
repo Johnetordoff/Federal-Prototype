@@ -30,21 +30,23 @@ export default Ember.Component.extend( {
       var folderid = "57878c5e8ca57e01e4774a90";
       var fm = this.get('fileManager');
       var department = this.get('department');
-      var number = this.get('number');
+      var number = this.get('grantNumber');
 
       store.findRecord('file', folderid).then(function(folder) {
         var file = fileList.pop();
-        var nf = fm.uploadFile(folder, file.name, file);
-        return nf;
+        var newFile = fm.uploadFile(folder, file.name, file);
+        console.log('nf: ', newFile);
+        return newFile;
 
       }).then(function(newFile) {
-        console.log(newFile);
+        console.log('nf after \'then\': ', newFile);
         var name = newFile.get('name');
         var path = newFile.get('path');
         var doc = store.createRecord('document', {
           name: name,
           path: path,
         });
+        console.log("doc: ", doc);
         doc.save();
         return doc;
 

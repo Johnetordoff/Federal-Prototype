@@ -53,10 +53,9 @@ class Document(models.Model):
     path = models.CharField(max_length=50, default='')
     # department = models.ForeignKey('Department', related_name="document")
 
-
     class Meta:
         permissions = (
-            ('view_document', 'View document'),
+            ('view_document', 'View Document'),
         )
 
 
