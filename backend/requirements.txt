@@ -1,0 +1,13 @@
+Django==1.9.7
+django-cors-headers==1.1.0
+django-guardian==1.4.4
+djangorestframework==3.3.3
+djangorestframework-jsonapi==2.0.0b1
+httpie==0.9.4
+inflection==0.3.1
+invoke==0.13.0
+psycopg2==2.6.1
+Pygments==2.1.3
+requests==2.10.0
+six==1.10.0
+whitenoise==3.2

@@ -23,7 +23,7 @@ class Department(models.Model):
 class Usertype(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     usertype = models.CharField(choices=USER_TYPES, max_length=50)
-    department = models.ForeignKey('Department', related_name='moderator', blank=True, null=True)
+    # department = models.ForeignKey('Department', related_name='moderator', blank=True, null=True)
 
 
 class Document(models.Model):

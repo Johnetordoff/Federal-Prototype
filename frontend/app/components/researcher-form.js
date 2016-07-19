@@ -25,26 +25,28 @@ export default Ember.Component.extend( {
     },
 
     submit(fileList) {
-      let folderid = "57878c5e8ca57e01e4774a90";
-      let fm = this.get('fileManager');
-      let department = this.get('department');
-      let store = this.get('store');
+      var folderid = "57878c5e8ca57e01e4774a90";
+      var fm = this.get('fileManager');
+      var department = this.get('department');
+      var store = this.get('store');
       var doc;
-      let testfolder = this.get('store').findRecord('file', folderid).then(function(testfolder) {
+      var testfolder = this.get('store').findRecord('file', folderid).then(function(testfolder) {
         while (fileList && fileList.length) {
-          let file = fileList.pop();
-          let newFile = fm.uploadFile(testfolder, file.name, file).then(function(newFile) {
+          var file = fileList.pop();
+          var newFile = fm.uploadFile(testfolder, file.name, file).then(function(newFile) {
             // console.log(newFile.get('path'));
             // console.log(newFile);
             doc = store.createRecord('document', {
-              name: newFile.get('name'),
-              path: newFile.get('path'),
-              department: department,
-            })
+              // name: newFile.get('name'),
+              // path: newFile.get('path'),
+              name: "testname",
+              path: "testpath",
+              //department: department,
+            });
             doc.save();
           });
         }
-      })
+      });
 
       this.get('store').createRecord('grant', {
         department: this.get('department'),

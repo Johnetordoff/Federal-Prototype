@@ -5,7 +5,7 @@ import attr from 'ember-data/attr';
 export default Model.extend({
   name: attr('string'),
   path: attr('string'),
-  document: attr('string')
+  // document: attr('string')
 });
 
 
