@@ -35,11 +35,10 @@ export default Ember.Component.extend( {
       store.findRecord('file', folderid).then(function(folder) {
         var file = fileList.pop();
         var newFile = fm.uploadFile(folder, file.name, file);
-        console.log('nf: ', newFile);
         return newFile;
-
+        // sometimes this promise resolves to `undefined`, which like, what the heck.
       }).then(function(newFile) {
-        console.log('nf after \'then\': ', newFile);
+        // and that obviously messes up everything in here. filed bug report tho
         var name = newFile.get('name');
         var path = newFile.get('path');
         var doc = store.createRecord('document', {
